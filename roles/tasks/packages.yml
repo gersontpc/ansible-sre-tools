@@ -1,0 +1,35 @@
+- name: Install packages networking
+  apt:
+    name: 
+      - netcat
+      - traceroute
+      - mtr
+      - curl
+      - wget
+      - nmap
+      - net-tools
+      - tcpdump
+      - nikto
+      - bind-utils
+    state: latest
+
+- name: Install packages utils
+  apt:
+    name:
+      - ca-certificates
+      - gnupg
+      - lsb-release
+      - git
+      - git-flow
+      - gitk 
+      - terminator
+      - zsh
+      - vim
+      - htop
+      - gparted
+      - curl
+      - tree 
+      - fzf 
+      - glances
+      - redis-tools
+    state: latest

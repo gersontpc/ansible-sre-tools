@@ -1,0 +1,4 @@
+---
+username: root
+docker_compose_version: v2.0.1
+kind_version: v0.11.1

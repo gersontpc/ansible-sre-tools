@@ -1,0 +1,8 @@
+---
+- name: Install Docker Kind
+  get_url:
+    url: https://kind.sigs.k8s.io/dl/{{ kind_version }}/kind-linux-amd64
+    dest: /usr/bin/kind
+    mode: u=rx,g=rx,o=rx
+
+    

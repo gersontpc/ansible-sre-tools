@@ -1,0 +1,11 @@
+--- 
+- name: Install VsCode.deb
+  apt:
+    deb: https://packages.microsoft.com/repos/vscode/pool/main/c/code/code_1.60.2-1632313585_amd64.deb
+
+- name: Install VsCode
+  apt:
+    name:
+      - code
+#    update_cache: yes
+    state: latest

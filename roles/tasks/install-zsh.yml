@@ -1,0 +1,38 @@
+---
+- name: Download script install zsh
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/zsh-install.sh
+    mode: u=rx
+
+- name: Install zsh
+  shell: |
+    cd /tmp
+    ./zsh-install.sh --update
+
+- name: Install font powerline
+  git:
+    repo: 'https://github.com/powerline/fonts.git'
+    dest: /tmp/font-powerline
+    depth: 1
+
+- name: Install AWS CLI
+  shell: |
+    cd /tmp/powerline
+    ./install.sh --update
+- name: Install plugin zsh (zsh-autosuggestions)
+  git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: ~/.oh-my-zsh/plugins/zsh-autosuggestions
+
+- name: Install plugin zsh (zsh-syntax-highlighting)
+  git:
+    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    dest: ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+
+- name: Copy config zshrc 
+  copy:
+    src: files/zshrc
+    dest: ~/.zshrc
+    mode: 0644
+    backup: yes

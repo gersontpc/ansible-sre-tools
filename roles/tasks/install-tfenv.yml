@@ -1,0 +1,29 @@
+---
+- name: Clone tfenv repo
+  git:
+    repo: https://github.com/tfutils/tfenv.git
+    dest: ~/.tfenv
+
+# - name: Create a symbolic link tfenv bins tfenv
+#   file:
+#     src: ~/.tfenv/bin/* 
+#     dest: /usr/local/bin
+#     state: link
+
+- name: Create two hard links
+  file:
+    src: '~/.tfenv/bin/{{ item.src }}'
+    dest: '/usr/local/bin/{{ item.dest }}'
+    state: link
+  with_items:
+    - { src: terraform, dest: terraform }
+    - { src: tfenv, dest: tfenv }
+
+- name: Install latest version and show version
+  shell: |
+    tfenv install latest
+    tfenv use latest
+    tfenv -v
+  register: tfenv
+
+- debug: var=tfenv.stdout_lines

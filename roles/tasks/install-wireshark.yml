@@ -1,0 +1,11 @@
+--- 
+- name: Install PPA Wireshark
+  apt_repository:
+    repo: 'ppa:wireshark-dev/stable'
+
+- name: Install Wireshark
+  apt:
+    name:
+      - wireshark
+#    update_cache: yes
+    state: latest

@@ -1,0 +1,37 @@
+---
+- name: Install Docker
+  import_tasks: install-docker.yml
+
+- name: Install Kubectl
+  import_tasks: install-kubectl.yml
+
+- name: Install Kind
+  import_tasks: install-kind.yml
+
+- name: Install TFenv
+  import_tasks: install-tfenv.yml
+
+- name: Install Helm
+  import_tasks: install-helm.yml
+
+- name: Install AWS CLI
+  import_tasks: install-aws-cli.yml
+
+- name: Install and configure ZSH
+  import_tasks: install-zsh.yml
+
+- name: Configure VIM
+  import_tasks: install-vimrc.yml
+
+- name: Configure istioctl
+  import_tasks: install-istioctl.yml
+
+- name: Install VScode
+  import_tasks: install-vscode.yml
+
+- name: Install Wireshark
+  import_tasks: install-wireshark.yml
+
+- name: Install default programs
+  import_tasks: packages.yml
+  # when: ansible_facts['os_family'] == "Deepin 20.2.4" or ansible_facts['os_family'] == "Debian" 

@@ -1,0 +1,11 @@
+--- 
+- name: Clone repo vimrc
+  git:
+    repo: 'https://github.com/amix/vimrc.git'
+    dest: ~/.vim_runtime
+    depth: 1
+
+- name: Install vimrc
+  shell: |
+    cd ~/.vim_runtime
+    ./install_awesome_vimrc.sh --update

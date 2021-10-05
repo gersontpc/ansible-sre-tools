@@ -1,0 +1,6 @@
+---
+- name: Download AWS CLI
+  unarchive:
+    src: https://github.com/istio/istio/releases/download/1.11.3/istio-1.11.3-linux-amd64.tar.gz
+    dest: /etc/istioctl
+    remote_src: True

@@ -1,0 +1,16 @@
+---
+- name: Add an Apt signing key, uses whichever key is at the URL
+  get_url:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    dest: /usr/share/keyrings/kubernetes-archive-keyring.gpg
+
+- name: Get source list k8s
+  shell: |
+    echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+- name: Install Kubectl package
+  apt:
+    name:
+      - kubectl
+#    update_cache: yes
+    state: latest
